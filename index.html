@@ -208,14 +208,14 @@
   function updateCountdown() {
     const now = new Date();
     const diff = targetDate - now;
-
     if(diff <= 0) {
-      countdownEl.textContent = "🎉 Happy Birthday Musfir! 🎉";
-      balloonBtn.disabled = false;
-      createSparkles();
-      clearInterval(countdownInterval);
-      return;
-    }
+    countdownEl.textContent = "🎉 Happy Birthday Musfir! 🎉";
+    // balloonBtn.disabled = false; // disable balloons button enablement
+    // createSparkles(); // disable sparkle effect
+    clearInterval(countdownInterval);
+    return;
+}
+    
     const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
     const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
@@ -229,7 +229,7 @@
   updateCountdown();
 
   balloonBtn.addEventListener('click', () => {
-    showBalloons();
+ //   showBalloons();
   });
 
   // Optional: autoplay birthday music after countdown ends
