@@ -4,7 +4,113 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Musfir Birthday Countdown</title>
-<link rel="stylesheet" href="style.css">
+<style>
+  :root {
+    --bg1:#89f7fe;
+    --bg2:#66a6ff;
+    --card:#ffffffcc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    font-family:'Nunito',Arial,sans-serif;
+    color:#fff;
+    text-align:center;
+    overflow-x:hidden;
+    position: relative;
+  }
+  .countdown-card{
+    background:var(--card);
+    padding:22px;
+    border-radius:16px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.15);
+    display:inline-block;
+    margin-top:80px;
+    min-width:320px;
+  }
+  .time{font-size:28px;font-weight:800;color:#003366;}
+  .labels{font-size:13px;color:#004080;margin-top:4px;}
+  .btn{cursor:pointer;padding:10px 14px;border-radius:12px;border:none;font-weight:700;transition:transform 0.2s;}
+  .btn:hover{transform:scale(1.05);}
+  .btn-play{background:#00b4d8;color:white;margin-top:10px;}
+  .gallery{
+    display:none;
+    max-width:1100px;
+    margin:28px auto;
+    padding:16px;
+    gap:12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  }
+  .photo{
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transform-origin:center;
+    transition:transform .18s;
+  }
+  .photo:hover{transform:translateY(-6px) scale(1.02);}
+  .photo img{display:block;width:100%;height:160px;object-fit:cover;}
+  .tooltip{
+    position:absolute;
+    left:8px;
+    bottom:8px;
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    padding:6px 8px;
+    border-radius:8px;
+    font-size:13px;
+  }
+  .modal-back{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+  }
+  .modal{
+    background:white;
+    border-radius:12px;
+    max-width:520px;
+    width:100%;
+    padding:16px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    text-align:center;
+  }
+  .reveal{display:none;text-align:center;margin-top:18px;}
+  .reveal .message{
+    font-family:'Pacifico',cursive;
+    font-size:40px;
+    color:#fff;
+    text-shadow:0 6px 24px rgba(0,0,0,0.2);
+  }
+  .controls{display:none;gap:10px;justify-content:center;margin:20px;}
+  .balloon{
+    position: fixed;
+    bottom:-100px;
+    border-radius:50%;
+    pointer-events:none;
+    width:40px;
+    height:60px;
+    animation: floatUp linear forwards, sway 2s ease-in-out infinite alternate;
+    z-index:1000;
+  }
+  @keyframes floatUp{
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-120vh) rotate(360deg); }
+  }
+  @keyframes sway{
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); }
+    100% { transform: translateX(-15px); }
+  }
+</style>
 </head>
 <body>
 
@@ -42,6 +148,124 @@
   <button id="musicStopBtn" class="btn btn-play">Play Music</button>
 </div>
 
-<script src="script.js"></script>
+<script>
+const countdownMsg = document.getElementById('countdownMsg');
+const timeDisplay = document.getElementById('timeDisplay');
+const revealSection = document.getElementById('revealSection');
+const gallery = document.getElementById('gallery');
+const musicBtn = document.getElementById('musicBtn');
+const controls = document.getElementById('controls');
+const modalBack = document.getElementById('modalBack');
+const modalMessage = document.getElementById('modalMessage');
+const okBtn = document.getElementById('okBtn');
+const balloonBtn = document.getElementById('balloonBtn');
+const stopBalloonBtn = document.getElementById('stopBalloonBtn');
+const musicStopBtn = document.getElementById('musicStopBtn');
+
+const giftMessages = [
+  'Check your first gift under the sofa.',
+  'Find your second gift in the refrigerator.',
+  'Your third gift is near the TV.',
+  'Look under your pillow for the fourth gift.',
+  'The fifth gift is in the cupboard.',
+  'Your final gift is behind the curtain.'
+];
+
+gallery.style.display='none';
+controls.style.display='none';
+
+// Countdown for testing 5 seconds
+const target = Date.now() + 5000; // 5 seconds countdown
+// const target = new Date('2025-10-27T00:00:00').getTime(); // Uncomment for 27th Oct
+
+function updateTimer(){
+  const now = Date.now();
+  const diff = target - now;
+  if(diff <= 0){
+    clearInterval(timerHandle);
+    revealSection.style.display='block';
+    gallery.style.display='grid';
+    controls.style.display='flex';
+    countdownMsg.textContent='';
+    timeDisplay.textContent='';
+    return;
+  }
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+  const secs=Math.floor((diff%(1000*60))/1000);
+  timeDisplay.textContent=`${String(days).padStart(2,'0')} : ${String(hrs).padStart(2,'0')} : ${String(mins).padStart(2,'0')} : ${String(secs).padStart(2,'0')}`;
+  countdownMsg.textContent=`${days}d ${hrs}h to go for Musfir's Birthday!`;
+}
+const timerHandle = setInterval(updateTimer,1000);
+updateTimer();
+
+// Music
+let audioCtx=null,isPlaying=false;
+musicBtn.addEventListener('click',()=>{
+  if(isPlaying){ audioCtx.close(); isPlaying=false; musicBtn.textContent='Play Music'; return; }
+  audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const notes=[264,264,297,264,352,330,264,264,297,264,396,352,264,264,528,440,352,330,297,466,466,440,352,396,352];
+  const dur=0.32;
+  let t=audioCtx.currentTime+0.1;
+  notes.forEach((f,i)=>{
+    const o=audioCtx.createOscillator();
+    const g=audioCtx.createGain();
+    o.type='sine';
+    o.frequency.value=f;
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    g.gain.setValueAtTime(0,t+i*dur);
+    g.gain.linearRampToValueAtTime(0.15,t+i*dur+0.01);
+    g.gain.linearRampToValueAtTime(0.0001,t+i*dur+dur-0.05);
+    o.start(t+i*dur);
+    o.stop(t+i*dur+dur);
+  });
+  isPlaying=true;
+  musicBtn.textContent='Stop Music';
+});
+
+// Gift modal
+document.querySelectorAll('.photo').forEach(photo=>{
+  photo.addEventListener('click',()=>{
+    const idx = Number(photo.dataset.index);
+    modalMessage.textContent = giftMessages[idx];
+    modalBack.style.display='flex';
+  });
+});
+okBtn.addEventListener('click',()=>modalBack.style.display='none');
+modalBack.addEventListener('click',e=>{if(e.target===modalBack) modalBack.style.display='none';});
+
+// Balloons
+let balloonInterval=null;
+balloonBtn.addEventListener('click',()=>{
+  if(balloonInterval) return;
+  balloonInterval=setInterval(()=>{
+    const b=document.createElement('div');
+    b.className='balloon';
+    const size=30+Math.random()*40;
+    b.style.width=size+'px';
+    b.style.height=size*1.4+'px';
+    b.style.left=Math.random()*90+'vw';
+    b.style.backgroundColor=`hsl(${Math.random()*360},70%,60%)`;
+    const duration=6+Math.random()*4;
+    b.style.animation=`floatUp ${duration}s linear forwards, sway 2s ease-in-out infinite alternate`;
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),duration*1000);
+  },300);
+});
+stopBalloonBtn.addEventListener('click',()=>{
+  clearInterval(balloonInterval);
+  balloonInterval=null;
+});
+
+// Post countdown HBD music
+let postAudio=null, postPlaying=false;
+musicStopBtn.addEventListener('click',()=>{
+  if(postPlaying){ postAudio.pause(); postAudio=null; postPlaying=false; musicStopBtn.textContent='Play Music'; }
+  else{ postAudio=new Audio('hbd.mp3'); postAudio.loop=true; postAudio.play(); postPlaying=true; musicStopBtn.textContent='Stop Music'; }
+});
+</script>
+
 </body>
 </html>
