@@ -1,4 +1,9 @@
-<!doctype html>
+<!--
+  Save this file as index.html and place in the repository root.
+  Put your images as: 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpeg
+  Put your MP3 as: hbd.mp3 (in same folder)
+  Then deploy this repo on GitHub Pages (branch: main or gh-pages) to host the site.
+--><!doctype html>
 
 <html lang="en">
 <head>
@@ -7,170 +12,288 @@
   <title>Musfir's Birthday 🎉</title>
   <style>
     :root{
-      --bg1:#ffeff6; --bg2:#fff8e6; --bg3:#e6fff5; --accent:#ff4081; --accent2:#ffc107; --accent3:#4dd0e1; --card:#ffffff;
-      font-family:'Comic Sans MS', 'Segoe UI', sans-serif;
+      --bg:#0b1220; --card:#0f1724; --accent:#ffde59; --muted:#cbd5e1;
+      --party1:#ff6b6b; --party2:#6bffb8; --party3:#6bb0ff;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial;
     }
     *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;padding:24px;animation:partybg 15s linear infinite alternate}
-    @keyframes partybg{0%{background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3))}50%{background:linear-gradient(135deg,var(--bg2),var(--bg3),var(--bg1))}100%{background:linear-gradient(135deg,var(--bg3),var(--bg1),var(--bg2))}}
-    .wrap{width:100%;max-width:1100px;background:rgba(255,255,255,0.8);border-radius:20px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,0.12);position:relative;overflow:hidden}
-    header{display:flex;gap:20px;align-items:center}
-    .logo{display:flex;flex-direction:column;gap:6px}
-    h1{margin:0;font-size:28px;color:#222}
-    .sub{color:#555;font-size:14px}.counterCard{background:linear-gradient(180deg,var(--card),#fff);padding:18px;border-radius:14px;display:flex;align-items:center;gap:18px;flex:1;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-.countLabel{font-weight:700;color:var(--accent)}
-.timeNums{display:flex;gap:8px;align-items:center}
-.timePiece{background:rgba(255,255,255,0.7);padding:12px 14px;border-radius:10px;min-width:70px;text-align:center;box-shadow:inset 0 0 6px rgba(0,0,0,0.1)}
-.big{font-size:20px;font-weight:800}
-.small{font-size:12px;color:#444}
+    html,body{height:100%;margin:0;background: radial-gradient(ellipse at 10% 10%, rgba(255,215,120,0.05), transparent 10%), radial-gradient(ellipse at 90% 90%, rgba(100,200,255,0.03), transparent 10%), linear-gradient(180deg,var(--bg), #071025); color:var(--muted)}
+    .wrap{max-width:1000px;margin:24px auto;padding:24px}header{display:flex;gap:16px;align-items:center}
+.logo{display:flex;gap:12px;align-items:center}
+.logo .ball{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--party1),var(--party2));box-shadow:0 6px 18px rgba(0,0,0,.4),0 0 18px rgba(255,200,100,.06)}
+h1{margin:0;font-size:1.6rem;color:var(--accent);text-shadow:0 2px 10px rgba(0,0,0,.6)}
 
-.controls{display:flex;flex-direction:column;gap:8px}
-button{padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700;cursor:pointer;box-shadow:0 6px 12px rgba(0,0,0,0.08)}
-button.secondary{background:var(--accent2);color:#333}
-.play-small{background:transparent;border:2px solid rgba(0,0,0,0.06);padding:8px;border-radius:8px;color:#333}
+.hero{display:grid;grid-template-columns:1fr 220px;gap:18px;align-items:center;margin-top:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(2,6,23,.6);}
 
-.main{display:flex;gap:22px;margin-top:20px}
-.left{flex:1}
-.right{width:320px;display:none}
+.countdown{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px}
+.label{font-weight:700;color:var(--accent)}
+.timegrid{display:flex;gap:8px}
+.timebox{min-width:72px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;text-align:center}
+.num{font-size:1.6rem;font-weight:800;color:white}
+.unit{font-size:0.85rem;color:var(--muted)}
 
-.message{margin-top:18px;padding:16px;border-radius:12px;background:linear-gradient(90deg,#fff,#fff7f2);box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center}
-.message h2{margin:4px 0 8px 0;color:var(--accent)}
-.message p{margin:0;color:#444}
+.controls{display:flex;flex-direction:column;gap:8px;align-items:center}
+button{background:linear-gradient(180deg,var(--party3),var(--party2));border:0;padding:8px 12px;border-radius:10px;font-weight:700;color:#06202b;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.smallbtn{padding:6px 10px;font-size:0.95rem}
 
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.pic{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;border:4px solid rgba(255,255,255,0.6);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
-.pic img{width:100%;height:120px;object-fit:cover;display:block}
-.pic span{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,0.5);color:#fff;padding:6px 8px;border-radius:6px;font-size:12px}
+/* main message when countdown ends */
+.celebrate{display:none;flex-direction:column;align-items:center;gap:12px;padding:26px;border-radius:14px;background:linear-gradient(90deg, rgba(255,110,150,0.06), rgba(110,200,255,0.04));}
+.celebrate h2{color:var(--accent);font-size:2rem;margin:0;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+.celebrate p{max-width:720px;text-align:center;color:var(--muted)}
 
-.actions{display:flex;gap:12px;margin-top:18px}
+/* images grid */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.gift{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,0.03)}
+.gift img{width:100%;height:160px;object-fit:cover;display:block;transform:scale(1);transition:transform .25s}
+.gift:hover img{transform:scale(1.05)}
+.tooltip{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:8px;font-size:0.85rem}
 
-.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:200;opacity:0;pointer-events:none;transition:all .18s}
-.modal.show{opacity:1;pointer-events:auto}
-.modal .card{background:white;padding:20px;border-radius:12px;max-width:92%;text-align:center}
+/* modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.modal{background:linear-gradient(180deg,#071126, #0f1724);padding:18px;border-radius:12px;max-width:420px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.6);}
+.modal h3{margin-top:0;color:var(--accent)}
+.modal p{color:var(--muted)}
+.modal .ok{margin-top:12px;display:flex;justify-content:flex-end}
 
-.balloon{position:fixed;bottom:-120px;z-index:50;border-radius:50%;width:48px;height:64px;display:flex;align-items:flex-end;justify-content:center;opacity:0.95}
-.string{width:2px;height:70px;background:rgba(0,0,0,0.1);position:absolute;bottom:-68px}
+/* balloons */
+.balloon{position:fixed;width:48px;height:64px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;display:flex;align-items:flex-end;justify-content:center;font-size:12px;padding-bottom:8px;z-index:4000}
+.string{position:absolute;bottom:-36px;left:50%;width:2px;height:40px;background:rgba(200,200,200,0.25);transform:translateX(-50%)}
 
-.confetti{position:absolute;inset:0;pointer-events:none}
+footer{margin-top:28px;text-align:center;color:rgba(255,255,255,0.35)}
 
-footer{margin-top:18px;text-align:center;color:#666;font-size:13px}
+@keyframes floatUp{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:1}
+  100%{transform:translateY(-120vh) translateX(var(--drift, 0px)) rotate(45deg);opacity:0.95}
+}
 
-@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-140vh) rotate(360deg)}}
+/* responsive */
+@media (max-width:760px){.hero{grid-template-columns:1fr}.timegrid{flex-wrap:wrap}.gift img{height:120px}}
 
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="confetti" aria-hidden="true"></div>
     <header>
       <div class="logo">
-        <h1>🎈 Musfir's Birthday Bash</h1>
-        <div class="sub">Oct 27 - make a wish and celebrate!</div>
-      </div>
-    </header><div class="main">
-  <div class="left">
-    <div class="counterCard" id="counterCard">
-      <div>
-        <div class="countLabel">Countdown for Musfir's birthday</div>
-        <div style="height:8px"></div>
-        <div class="timeNums" id="timeNums">
-          <div class="timePiece"><div class="big" id="days">0</div><div class="small">Days</div></div>
-          <div class="timePiece"><div class="big" id="hours">0</div><div class="small">Hours</div></div>
-          <div class="timePiece"><div class="big" id="minutes">0</div><div class="small">Minutes</div></div>
-          <div class="timePiece"><div class="big" id="seconds">0</div><div class="small">Seconds</div></div>
+        <div class="ball" aria-hidden="true"></div>
+        <div>
+          <h1>Musfir's Birthday Bash 🎂</h1>
+          <div style="font-size:0.9rem;color:var(--muted)">Get ready for fun — Oct 27!</div>
         </div>
       </div>
-
-      <div class="controls">
-        <button id="randPlay" class="play-small">▶ Play a random birthday tune</button>
-        <div style="font-size:12px;color:#666;text-align:right">(click to play)</div>
-      </div>
+    </header><main class="hero">
+  <section class="card countdown" aria-live="polite">
+    <div class="label">Countdown for Musfir's birthday</div>
+    <div id="time" class="timegrid">
+      <div class="timebox"><div id="days" class="num">--</div><div class="unit">Days</div></div>
+      <div class="timebox"><div id="hours" class="num">--</div><div class="unit">Hours</div></div>
+      <div class="timebox"><div id="minutes" class="num">--</div><div class="unit">Minutes</div></div>
+      <div class="timebox"><div id="seconds" class="num">--</div><div class="unit">Seconds</div></div>
     </div>
-
-    <div class="message" id="messageArea" style="display:none">
-      <h2>🎉 Happy Birthday, Musfir! 🎉</h2>
-      <p>You make our life brighter — thank you for being wonderful. Here's to giggles, cake, and amazing surprises!</p>
-
-      <div class="gallery" id="gallery">
-        <div class="pic" data-index="1" title="Click to get gift1"><img src="1.jpg" alt="gift 1"><span>Click to get gift 1</span></div>
-        <div class="pic" data-index="2" title="Click to get gift2"><img src="2.jpg" alt="gift 2"><span>Click to get gift 2</span></div>
-        <div class="pic" data-index="3" title="Click to get gift3"><img src="3.jpg" alt="gift 3"><span>Click to get gift 3</span></div>
-        <div class="pic" data-index="4" title="Click to get gift4"><img src="4.jpg" alt="gift 4"><span>Click to get gift 4</span></div>
-        <div class="pic" data-index="5" title="Click to get gift5"><img src="5.jpg" alt="gift 5"><span>Click to get gift 5</span></div>
-        <div class="pic" data-index="6" title="Click to get gift6"><img src="6.jpeg" alt="gift 6"><span>Click to get gift 6</span></div>
-      </div>
-
-      <div class="actions">
-        <button id="balloonToggle">Start Balloons</button>
-        <button id="playHbd" class="secondary">Play Music (hbd.mp3)</button>
-      </div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <button id="playRandom" class="smallbtn" aria-label="Play random birthday tune">Play a random tune</button>
+      <button id="muteRandom" class="smallbtn" aria-label="Stop random tune">Stop tune</button>
     </div>
+  </section>
 
-  </div>
-
-  <aside class="right" id="partyControls">
-    <div style="background:linear-gradient(180deg,#fff,#fffef8);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
-      <strong>Party Controls</strong>
-      <p style="margin:8px 0 0 0;font-size:13px;color:#555">Use the buttons to add balloons and music!</p>
-    </div>
+  <aside class="card controls">
+    <div style="font-weight:800;color:var(--accent);">Party Controls</div>
+    <button id="balloonsToggle" class="smallbtn">Start Balloons</button>
+    <button id="musicPlay" class="smallbtn">Play music (hbd.mp3)</button>
+    <button id="musicStop" class="smallbtn">Stop music</button>
   </aside>
-</div>
+</main>
 
-<footer>Made with love by Mommy and Vaapa ❤️</footer>
+<section class="card celebrate" id="celebrateBox">
+  <h2>Happy Birthday Musfir! 🎉</h2>
+  <p>We made today brighter because of you — may your year be full of laughter, cake, and awesome surprises! You make our life happier every day. ❤️</p>
 
-  </div>  <div class="modal" id="modal">
-    <div class="card" role="dialog" aria-modal="true">
-      <div id="modalMsg">...message...</div>
-      <div style="height:12px"></div>
-      <button id="modalOk">OK</button>
+  <div class="gallery" id="gallery">
+    <!-- 6 pictures expected in the same folder: 1.jpg .. 6.jpeg -->
+    <div class="gift" data-index="0" title="Click to get gift 1"><span class="tooltip">Click to get gift 1</span><img src="1.jpg" alt="gift 1"></div>
+    <div class="gift" data-index="1" title="Click to get gift 2"><span class="tooltip">Click to get gift 2</span><img src="2.jpg" alt="gift 2"></div>
+    <div class="gift" data-index="2" title="Click to get gift 3"><span class="tooltip">Click to get gift 3</span><img src="3.jpg" alt="gift 3"></div>
+    <div class="gift" data-index="3" title="Click to get gift 4"><span class="tooltip">Click to get gift 4</span><img src="4.jpg" alt="gift 4"></div>
+    <div class="gift" data-index="4" title="Click to get gift 5"><span class="tooltip">Click to get gift 5</span><img src="5.jpg" alt="gift 5"></div>
+    <div class="gift" data-index="5" title="Click to get gift 6"><span class="tooltip">Click to get gift 6</span><img src="6.jpeg" alt="gift 6"></div>
+  </div>
+</section>
+
+<footer>Made with love — deploy on GitHub Pages by placing this file and assets in a repo and enabling Pages.</footer>
+
+  </div>  <!-- modal -->  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h3 id="modalTitle">Your gift</h3>
+      <p id="modalText">Gift location message</p>
+      <div class="ok"><button id="modalOk" class="smallbtn">OK</button></div>
     </div>
-  </div>  <script>
-    // Target date: Oct 27, 2025 00:00:00
-    const target = new Date('2025-10-27T00:00:00');
-    // For quick testing uncomment the below line for a 5 second countdown
-    // const target = new Date(new Date().getTime() + 5000);
+  </div>  <!-- audio for user-provided track --><audio id="hbdTrack" src="hbd.mp3" preload="auto"></audio>
 
-    const daysEl=document.getElementById('days'),hrsEl=document.getElementById('hours'),minsEl=document.getElementById('minutes'),secsEl=document.getElementById('seconds');
-    const messageArea=document.getElementById('messageArea'),counterCard=document.getElementById('counterCard'),partyControls=document.getElementById('partyControls');
+  <script>
+    // ---------- Countdown logic ----------
+    // Target: Oct 27 of this year (set explicitly to 2025 Oct 27 00:00 local time)
+    const target = new Date(2025, 9, 27, 0, 0, 0); // month is 0-indexed: 9 = October
 
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minsEl = document.getElementById('minutes');
+    const secsEl = document.getElementById('seconds');
+    const celebrateBox = document.getElementById('celebrateBox');
+
+    let timer = null;
     function updateCountdown(){
-      const now=new Date();
-      let diff=target-now;
-      if(diff<=0){daysEl.textContent=0;hrsEl.textContent=0;minsEl.textContent=0;secsEl.textContent=0;showBirthday();return;}
-      const d=Math.floor(diff/(1000*60*60*24));diff-=d*(1000*60*60*24);
-      const h=Math.floor(diff/(1000*60*60));diff-=h*(1000*60*60);
-      const m=Math.floor(diff/(1000*60));diff-=m*(1000*60);
-      const s=Math.floor(diff/1000);
-      daysEl.textContent=d;hrsEl.textContent=h;minsEl.textContent=m;secsEl.textContent=s;
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+      const d = Math.floor(diff / (1000*60*60*24));
+      diff -= d * (1000*60*60*24);
+      const h = Math.floor(diff / (1000*60*60));
+      diff -= h * (1000*60*60);
+      const m = Math.floor(diff / (1000*60));
+      diff -= m * (1000*60);
+      const s = Math.floor(diff / 1000);
+
+      daysEl.textContent = String(d).padStart(2,'0');
+      hoursEl.textContent = String(h).padStart(2,'0');
+      minsEl.textContent = String(m).padStart(2,'0');
+      secsEl.textContent = String(s).padStart(2,'0');
+
+      if(target - now <= 0){
+        clearInterval(timer);
+        showCelebration();
+      }
     }
-    let countdownInterval=setInterval(updateCountdown,250);updateCountdown();
+    updateCountdown();
+    timer = setInterval(updateCountdown, 1000);
 
-    function showBirthday(){
-      clearInterval(countdownInterval);
-      counterCard.style.display='none';
-      messageArea.style.display='block';
-      partyControls.style.display='block';
-      startConfetti();
+    function showCelebration(){
+      celebrateBox.style.display = 'flex';
+      // small confetti with balloons spawn
+      startBalloons();
     }
 
-    const modal=document.getElementById('modal');const modalMsg=document.getElementById('modalMsg');const modalOk=document.getElementById('modalOk');
-    const giftHints={1:'Your first gift is under the sofa. Shh! 🎁',2:'Your second gift is near the chair — look below the cushion. 🪑',3:'Look behind the bookshelf — your third gift loves books! 📚',4:'The fourth gift is hiding in the kitchen drawer. 🍪',5:'Under the bed there is a little surprise for the fifth gift. 🛏️',6:'Your sixth gift is waiting by the front door — don\\'t forget to check! 🚪'};
-    document.querySelectorAll('.pic').forEach(pic=>{pic.addEventListener('click',()=>{const idx=pic.getAttribute('data-index');modalMsg.textContent=giftHints[idx]||'A surprise awaits!';modal.classList.add('show');});});
-    modalOk.addEventListener('click',()=>modal.classList.remove('show'));
+    // ---------- Modal for gifts ----------
+    const gifts = [
+      'Your first gift is under the sofa.','Your second gift is near the chair.','Your third gift is inside the red box.','Your fourth gift is behind the curtains.','Your fifth gift is in the blue drawer.','Your sixth gift is on top of the bookshelf.'
+    ];
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modalBackdrop');
+    const modalText = document.getElementById('modalText');
+    const modalTitle = document.getElementById('modalTitle');
+    document.querySelectorAll('.gift').forEach(el => {
+      el.addEventListener('click', ()=>{
+        const idx = Number(el.dataset.index);
+        modalTitle.textContent = `Gift ${idx+1}`;
+        modalText.textContent = gifts[idx] || 'Here is your surprise!';
+        modal.style.display = 'flex';
+      });
+    });
+    document.getElementById('modalOk').addEventListener('click', ()=> modal.style.display='none');
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none'});
 
-    let balloonTimer=null;let balloonActive=false;const balloonBtn=document.getElementById('balloonToggle');
-    balloonBtn.addEventListener('click',()=>{if(!balloonActive){startBalloons();balloonBtn.textContent='Stop Balloons';}else{stopBalloons();balloonBtn.textContent='Start Balloons';}balloonActive=!balloonActive;});
-    function startBalloons(){balloonTimer=setInterval(createBalloon,450);}function stopBalloons(){clearInterval(balloonTimer);document.querySelectorAll('.balloon').forEach(b=>b.remove());}
-    function rand(min,max){return Math.random()*(max-min)+min}function createBalloon(){const b=document.createElement('div');b.className='balloon';const w=Math.floor(rand(36,74));const h=Math.floor(w*1.3);b.style.width=w+'px';b.style.height=h+'px';const left=rand(-10,100);b.style.left=left+'%';const color=['#ff6b81','#ffd166','#6fe7c1','#9ad1ff','#c18dff'][Math.floor(rand(0,5))];b.style.background='radial-gradient(circle at 30% 20%, #fff,'+color+')';b.style.boxShadow='0 8px 18px rgba(0,0,0,0.12)';const s=rand(14,28);b.style.animation=`floatUp ${s}s linear forwards`;b.style.transform=`translateY(0) rotate(${rand(-20,20)}deg)`;const str=document.createElement('div');str.className='string';b.appendChild(str);document.body.appendChild(b);setTimeout(()=>{b.remove();},s*1000+500);}
+    // ---------- Balloons ----------
+    let balloonInterval = null;
+    let balloonCounter = 0;
+    const balloonsToggle = document.getElementById('balloonsToggle');
 
-    const audioCtx=new(window.AudioContext||window.webkitAudioContext)();document.getElementById('randPlay').addEventListener('click',()=>playRandomTune());
-    function playRandomTune(){const melody=[0,0,2,0,5,4,0,0,2,0,7,5,0,0,12,9,5,4,2,10,10,9,5,7,5];const baseFreq=220+Math.floor(Math.random()*40);const tempo=rand(240,340);let when=audioCtx.currentTime+0.05;melody.forEach((n,i)=>{const duration=(i%3===2)?(tempo*1.1/1000):(tempo/1000);const freq=baseFreq*Math.pow(2,n/12);playTone(freq,when,duration);when+=duration;});}
-    function playTone(freq,start,dur){const o=audioCtx.createOscillator();const g=audioCtx.createGain();o.type=Math.random()>0.5?'sine':'triangle';o.frequency.setValueAtTime(freq,start);g.gain.setValueAtTime(0.0001,start);g.gain.exponentialRampToValueAtTime(0.14,start+0.02);g.gain.exponentialRampToValueAtTime(0.0001,start+dur);o.connect(g);g.connect(audioCtx.destination);o.start(start);o.stop(start+dur+0.02);}
+    function random(min,max){ return Math.random()*(max-min)+min }
 
-    const playHbdBtn=document.getElementById('playHbd');let hbdAudio=null;playHbdBtn.addEventListener('click',()=>{if(!hbdAudio){hbdAudio=new Audio('hbd.mp3');hbdAudio.loop=false;}hbdAudio.currentTime=0;hbdAudio.play().catch(()=>{});});
+    function spawnBalloon(){
+      balloonCounter++;
+      const b = document.createElement('div');
+      b.className = 'balloon';
+      const hue = Math.floor(Math.random()*360);
+      b.style.background = `linear-gradient(180deg,hsl(${hue} 80% 65%), hsl(${(hue+40)%360} 80% 55%))`;
+      const left = random(0,100);
+      b.style.left = left + 'vw';
+      b.style.bottom = '-20vh';
+      b.style.setProperty('--drift', `${random(-60,60)}px`);
+      b.style.width = `${random(36,80)}px`;
+      b.style.height = `${random(44,110)}px`;
+      b.style.animation = `floatUp ${random(6,14)}s linear forwards`;
+      const s = document.createElement('div'); s.className='string'; b.appendChild(s);
+      document.body.appendChild(b);
 
-    function startConfetti(){const confetti=document.querySelector('.confetti');for(let i=0;i<60;i++){const d=document.createElement('div');d.style.position='absolute';d.style.width='8px';d.style.height='8px';d.style.borderRadius='50%';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.opacity=Math.random()*0.9+0.3;const colors=['#ff6b81','#ffd166','#9ad1ff','#6fe7c1','#c18dff'];d.style.background=colors[Math.floor(Math.random()*colors.length)];d.style.transform=`translateY(${Math.random()*40-20}px) rotate(${Math.random()*360}deg)`;confetti.appendChild(d);}setTimeout(()=>{confetti.innerHTML='';},24000);}
+      // remove after animation
+      setTimeout(()=>{ if(b.parentNode) b.parentNode.removeChild(b); }, 16000);
+    }
 
-    window.addEventListener('keydown',(e)=>{if(e.key==='Escape')modal.classList.remove('show');});
+    function startBalloons(){
+      if(balloonInterval) return;
+      balloonInterval = setInterval(spawnBalloon, 400);
+      balloonsToggle.textContent = 'Stop Balloons';
+    }
+    function stopBalloons(){
+      if(balloonInterval) clearInterval(balloonInterval);
+      balloonInterval = null;
+      balloonsToggle.textContent = 'Start Balloons';
+      // remove existing balloons
+      document.querySelectorAll('.balloon').forEach(n=>n.remove());
+    }
+
+    balloonsToggle.addEventListener('click', ()=>{
+      if(balloonInterval) stopBalloons(); else startBalloons();
+    });
+
+    // ---------- Music
+    const hbdTrack = document.getElementById('hbdTrack');
+    document.getElementById('musicPlay').addEventListener('click', ()=>{
+      hbdTrack.currentTime = 0; hbdTrack.play();
+    });
+    document.getElementById('musicStop').addEventListener('click', ()=>{ hbdTrack.pause(); hbdTrack.currentTime = 0; });
+
+    // ---------- Random happy-birthday tune using WebAudio API ----------
+    let audioCtx = null; let tuneTimeouts = [];
+    const playRandomBtn = document.getElementById('playRandom');
+    const muteRandomBtn = document.getElementById('muteRandom');
+
+    function ensureAudioCtx(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+
+    // simple melodies (note frequencies)
+    const melodies = [
+      // short 'happy birthday' like melody (approx)
+      [ {n:262,d:0.4},{n:262,d:0.4},{n:294,d:0.8},{n:262,d:0.8},{n:349,d:0.8},{n:330,d:1.2} ],
+      [ {n:392,d:0.5},{n:392,d:0.5},{n:440,d:0.8},{n:392,d:0.8},{n:523,d:0.8},{n:494,d:1.2} ],
+      [ {n:523,d:0.4},{n:523,d:0.4},{n:587,d:0.8},{n:523,d:0.8},{n:659,d:0.8},{n:622,d:1.2} ]
+    ];
+
+    function playMelody(seq, tempo=1){
+      ensureAudioCtx();
+      stopRandomTune();
+      let t = audioCtx.currentTime + 0.05;
+      seq.forEach((s, i)=>{
+        const o = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        o.type = 'sine';
+        o.frequency.value = s.n;
+        gain.gain.value = 0.0001;
+        o.connect(gain); gain.connect(audioCtx.destination);
+        o.start(t);
+        gain.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + s.d*tempo);
+        o.stop(t + s.d*tempo + 0.03);
+        t += s.d*tempo;
+      });
+
+      // fallback to clear after a while
+      const total = seq.reduce((a,b)=>a+b.d,0)*1000*tempo + 500;
+      const to = setTimeout(()=>{ stopRandomTune(); }, total);
+      tuneTimeouts.push(to);
+    }
+
+    function stopRandomTune(){ tuneTimeouts.forEach(t=>clearTimeout(t)); tuneTimeouts=[]; if(audioCtx && audioCtx.state!=='closed'){ /* cannot easily stop oscillators already scheduled */ } }
+
+    playRandomBtn.addEventListener('click', ()=>{
+      const pick = melodies[Math.floor(Math.random()*melodies.length)];
+      playMelody(pick, 0.95);
+    });
+    muteRandomBtn.addEventListener('click', ()=>{ stopRandomTune(); });
+
+    // accessibility: keyboard enter on gifts
+    document.querySelectorAll('.gift').forEach(g=>{ g.tabIndex=0; g.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') g.click(); }); });
+
+    // make sure if page is loaded after target (e.g., user opens on Oct 28) it shows celebrate
+    if(new Date() >= target) showCelebration();
+
   </script></body>
 </html>
