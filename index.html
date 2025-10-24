@@ -1,245 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Happy Birthday Musfir!</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, #fceabb, #f8b500, #ff6f91);
-    font-family: 'Comic Neue', cursive, sans-serif;
-    color: #333;
-    overflow-x: hidden;
-  }
-  header {
-    text-align: center;
-    padding: 2rem 1rem;
-    color: #fff;
-    text-shadow: 1px 1px 6px #0006;
-  }
-  header h1 {
-    font-size: 3rem;
-    margin: 0.5rem 0;
-  }
-  header h2 {
-    font-weight: normal;
-    font-size: 1.5rem;
-  }
-  #countdown {
-    font-size: 2.5rem;
-    margin: 1rem 0 2rem 0;
-    color: #fff;
-    text-shadow: 1px 1px 5px #0008;
-    text-align: center;
-  }
-  #photos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 2rem 1rem;
-  }
-  .photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px #0005;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  .photo:hover {
-    transform: scale(1.1);
-  }
-  #balloonBtn {
-    display: block;
-    margin: 2rem auto;
-    background: #ff4081;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    color: white;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px #f48fb1cc;
-    transition: background-color 0.3s ease;
-  }
-  #balloonBtn:hover {
-    background: #e91e63;
-  }
-  /* Sparkle animation */
-  .sparkle-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    overflow: visible;
-    z-index: 1000;
-  }
-  .sparkle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: radial-gradient(white, transparent);
-    border-radius: 50%;
-    filter: drop-shadow(0 0 6px white);
-    animation: sparkle-flicker 1.5s infinite alternate;
-  }
-  @keyframes sparkle-flicker {
-    0% {opacity: 1; transform: scale(1);}
-    100% {opacity: 0; transform: scale(1.5);}
-  }
-  /* Balloons */
-  .balloon {
-    position: fixed;
-    bottom: -150px;
-    background-color: red;
-    width: 50px;
-    height: 70px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    opacity: 0.8;
-    animation: floatUp 7s linear forwards;
-    box-shadow: inset -5px -10px 15px rgba(255 255 255 / 0.7);
-  }
-  .balloon::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    width: 2px;
-    height: 15px;
-    background: black;
-    transform: translateX(-50%);
-  }
-  @keyframes floatUp {
-    to {
-      transform: translateY(-110vh);
-      opacity: 0;
-    }
-  }
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musfir Birthday Countdown</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Happy Birthday Musfir!</h1>
-  <h2>Counting down to your special day 🎉</h2>
-</header>
 
-<div id="countdown">
-  Loading countdown...
+<div class="countdown-card">
+  <div id="countdownMsg">--</div>
+  <div id="timeDisplay" class="time">-- : -- : -- : --</div>
+  <div class="labels">Days : Hours : Minutes : Seconds</div>
+  <button id="musicBtn" class="btn btn-play">Play Music</button>
 </div>
 
-<div id="photos">
-  <!-- Put your photos here by replacing the src attributes -->
-  <img src="https://via.placeholder.com/150?text=Photo+1" alt="Photo 1" class="photo" />
-  <img src="https://via.placeholder.com/150?text=Photo+2" alt="Photo 2" class="photo" />
-  <img src="https://via.placeholder.com/150?text=Photo+3" alt="Photo 3" class="photo" />
+<section class="reveal" id="revealSection">
+  <div class="message">Happy Birthday Musfir! 🎂🎈</div>
+  <p>We love you — open your gifts below!</p>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="photo" data-index="0"><img src="1.jpg"><div class="tooltip">Click to get gift1</div></div>
+  <div class="photo" data-index="1"><img src="2.jpg"><div class="tooltip">Click to get gift2</div></div>
+  <div class="photo" data-index="2"><img src="3.jpg"><div class="tooltip">Click to get gift3</div></div>
+  <div class="photo" data-index="3"><img src="4.jpg"><div class="tooltip">Click to get gift4</div></div>
+  <div class="photo" data-index="4"><img src="5.jpg"><div class="tooltip">Click to get gift5</div></div>
+  <div class="photo" data-index="5"><img src="6.jpeg"><div class="tooltip">Click to get gift6</div></div>
+</section>
+
+<div id="modalBack" class="modal-back">
+  <div class="modal">
+    <h3 id="modalMessage">Gift message</h3>
+    <button id="okBtn" class="btn btn-play">OK</button>
+  </div>
 </div>
 
-<button id="balloonBtn" disabled>Shower Balloons 🎈</button>
+<div class="controls" id="controls">
+  <button id="balloonBtn" class="btn btn-play">Release Balloons</button>
+  <button id="stopBalloonBtn" class="btn btn-play">Stop Balloons</button>
+  <button id="musicStopBtn" class="btn btn-play">Play Music</button>
+</div>
 
-<audio id="birthdayMusic" controls loop style="display:block; margin: 2rem auto;">
-  <source src="https://actions.google.com/sounds/v1/holiday/happy_birthday_song.ogg" type="audio/ogg" />
-  <source src="https://actions.google.com/sounds/v1/holiday/happy_birthday_song.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
-
-<div class="sparkle-container" id="sparkleContainer" style="display:none;"></div>
-
-<script>
-  const countdownEl = document.getElementById('countdown');
-  const balloonBtn = document.getElementById('balloonBtn');
-  const sparkleContainer = document.getElementById('sparkleContainer');
-  const birthdayMusic = document.getElementById('birthdayMusic');
-
-  // Countdown target date
-  const targetDate = new Date('2025-10-27T00:00:00');
-
-  // Create sparkle particles
-  function createSparkles() {
-    sparkleContainer.style.display = 'block';
-    for(let i = 0; i < 30; i++) {
-      let sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.style.top = Math.random() * window.innerHeight + 'px';
-      sparkle.style.left = Math.random() * window.innerWidth + 'px';
-      sparkle.style.animationDelay = (Math.random() * 1.5) + 's';
-      sparkleContainer.appendChild(sparkle);
-    }
-  }
-
-  // Balloons colors
-  const balloonColors = [
-    '#ff4b3e', '#ff9f1c', '#2ec4b6', '#e71d36', '#ffcb77',
-    '#6a0572', '#8338ec', '#3a0ca3', '#f72585', '#4361ee'
-  ];
-
-  // Create a balloon element
-  function createBalloon() {
-    const balloon = document.createElement('div');
-    balloon.classList.add('balloon');
-    balloon.style.backgroundColor = balloonColors[Math.floor(Math.random()*balloonColors.length)];
-    balloon.style.left = Math.random() * window.innerWidth + 'px';
-    balloon.style.animationDuration = (5 + Math.random()*5) + 's';
-    balloon.style.opacity = 0.8 + Math.random() * 0.2;
-    return balloon;
-  }
-
-  // Show balloon shower
-  function showBalloons() {
-    for(let i=0; i < 20; i++) {
-      let balloon = createBalloon();
-      document.body.appendChild(balloon);
-      setTimeout(() => {
-        balloon.style.bottom = '110vh';
-        balloon.style.opacity = 0;
-      }, 100);
-      setTimeout(() => {
-        balloon.remove();
-      }, 7000);
-    }
-  }
-
-  // Update countdown every second
-  function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
-    if(diff <= 0) {
-    countdownEl.textContent = "🎉 Happy Birthday Musfir! 🎉";
-    // balloonBtn.disabled = false; // disable balloons button enablement
-    // createSparkles(); // disable sparkle effect
-    clearInterval(countdownInterval);
-    return;
-}
-    
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((diff % (1000*60)) / 1000);
-
-    countdownEl.textContent = 
-      `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
-  }
-
-  const countdownInterval = setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  balloonBtn.addEventListener('click', () => {
- //   showBalloons();
-  });
-
-  // Optional: autoplay birthday music after countdown ends
-  countdownEl.addEventListener('DOMSubtreeModified', () => {
-    if(countdownEl.textContent.includes('Happy Birthday') && birthdayMusic.paused) {
-      birthdayMusic.play().catch(() => {
-        // Autoplay blocked, user can play manually
-      });
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
-    </html>
+</html>
