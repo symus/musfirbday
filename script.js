@@ -24,7 +24,9 @@ gallery.style.display='none';
 controls.style.display='none';
 
 // Countdown to 27th Oct 2025
-const target = new Date('2025-10-27T00:00:00').getTime();
+//const target = new Date('2025-10-27T00:00:00').getTime();
+const target = Date.now() + 5000; // 5 seconds countdown
+
 function updateTimer(){
   const now = Date.now();
   const diff = target - now;
