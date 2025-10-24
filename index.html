@@ -1,271 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Musfir Birthday Countdown</title>
-<style>
-  :root {
-    --bg1:#89f7fe;
-    --bg2:#66a6ff;
-    --card:#ffffffcc;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    min-height:100vh;
-    background:linear-gradient(135deg,var(--bg1),var(--bg2));
-    font-family:'Nunito',Arial,sans-serif;
-    color:#fff;
-    text-align:center;
-    overflow-x:hidden;
-    position: relative;
-  }
-  .countdown-card{
-    background:var(--card);
-    padding:22px;
-    border-radius:16px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.15);
-    display:inline-block;
-    margin-top:80px;
-    min-width:320px;
-  }
-  .time{font-size:28px;font-weight:800;color:#003366;}
-  .labels{font-size:13px;color:#004080;margin-top:4px;}
-  .btn{cursor:pointer;padding:10px 14px;border-radius:12px;border:none;font-weight:700;transition:transform 0.2s;}
-  .btn:hover{transform:scale(1.05);}
-  .btn-play{background:#00b4d8;color:white;margin-top:10px;}
-  .gallery{
-    display:none;
-    max-width:1100px;
-    margin:28px auto;
-    padding:16px;
-    gap:12px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  }
-  .photo{
-    position:relative;
-    border-radius:12px;
-    overflow:hidden;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);
-    transform-origin:center;
-    transition:transform .18s;
-  }
-  .photo:hover{transform:translateY(-6px) scale(1.02);}
-  .photo img{display:block;width:100%;height:160px;object-fit:cover;}
-  .tooltip{
-    position:absolute;
-    left:8px;
-    bottom:8px;
-    background:rgba(0,0,0,0.5);
-    color:#fff;
-    padding:6px 8px;
-    border-radius:8px;
-    font-size:13px;
-  }
-  .modal-back{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.5);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:50;
-  }
-  .modal{
-    background:white;
-    border-radius:12px;
-    max-width:520px;
-    width:100%;
-    padding:16px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.3);
-    text-align:center;
-  }
-  .reveal{display:none;text-align:center;margin-top:18px;}
-  .reveal .message{
-    font-family:'Pacifico',cursive;
-    font-size:40px;
-    color:#fff;
-    text-shadow:0 6px 24px rgba(0,0,0,0.2);
-  }
-  .controls{display:none;gap:10px;justify-content:center;margin:20px;}
-  .balloon{
-    position: fixed;
-    bottom:-100px;
-    border-radius:50%;
-    pointer-events:none;
-    width:40px;
-    height:60px;
-    animation: floatUp linear forwards, sway 2s ease-in-out infinite alternate;
-    z-index:1000;
-  }
-  @keyframes floatUp{
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-120vh) rotate(360deg); }
-  }
-  @keyframes sway{
-    0% { transform: translateX(0); }
-    50% { transform: translateX(15px); }
-    100% { transform: translateX(-15px); }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Musfir's Birthday 🎉</title>
+  <style>
+    :root{
+      --bg1:#ffeff6; --bg2:#fff8e6; --bg3:#e6fff5; --accent:#ff4081; --accent2:#ffc107; --accent3:#4dd0e1; --card:#ffffff;
+      font-family:'Comic Sans MS', 'Segoe UI', sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;padding:24px;animation:partybg 15s linear infinite alternate}
+    @keyframes partybg{0%{background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3))}50%{background:linear-gradient(135deg,var(--bg2),var(--bg3),var(--bg1))}100%{background:linear-gradient(135deg,var(--bg3),var(--bg1),var(--bg2))}}
+    .wrap{width:100%;max-width:1100px;background:rgba(255,255,255,0.8);border-radius:20px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,0.12);position:relative;overflow:hidden}
+    header{display:flex;gap:20px;align-items:center}
+    .logo{display:flex;flex-direction:column;gap:6px}
+    h1{margin:0;font-size:28px;color:#222}
+    .sub{color:#555;font-size:14px}.counterCard{background:linear-gradient(180deg,var(--card),#fff);padding:18px;border-radius:14px;display:flex;align-items:center;gap:18px;flex:1;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.countLabel{font-weight:700;color:var(--accent)}
+.timeNums{display:flex;gap:8px;align-items:center}
+.timePiece{background:rgba(255,255,255,0.7);padding:12px 14px;border-radius:10px;min-width:70px;text-align:center;box-shadow:inset 0 0 6px rgba(0,0,0,0.1)}
+.big{font-size:20px;font-weight:800}
+.small{font-size:12px;color:#444}
+
+.controls{display:flex;flex-direction:column;gap:8px}
+button{padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700;cursor:pointer;box-shadow:0 6px 12px rgba(0,0,0,0.08)}
+button.secondary{background:var(--accent2);color:#333}
+.play-small{background:transparent;border:2px solid rgba(0,0,0,0.06);padding:8px;border-radius:8px;color:#333}
+
+.main{display:flex;gap:22px;margin-top:20px}
+.left{flex:1}
+.right{width:320px;display:none}
+
+.message{margin-top:18px;padding:16px;border-radius:12px;background:linear-gradient(90deg,#fff,#fff7f2);box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center}
+.message h2{margin:4px 0 8px 0;color:var(--accent)}
+.message p{margin:0;color:#444}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.pic{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;border:4px solid rgba(255,255,255,0.6);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.pic img{width:100%;height:120px;object-fit:cover;display:block}
+.pic span{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,0.5);color:#fff;padding:6px 8px;border-radius:6px;font-size:12px}
+
+.actions{display:flex;gap:12px;margin-top:18px}
+
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:200;opacity:0;pointer-events:none;transition:all .18s}
+.modal.show{opacity:1;pointer-events:auto}
+.modal .card{background:white;padding:20px;border-radius:12px;max-width:92%;text-align:center}
+
+.balloon{position:fixed;bottom:-120px;z-index:50;border-radius:50%;width:48px;height:64px;display:flex;align-items:flex-end;justify-content:center;opacity:0.95}
+.string{width:2px;height:70px;background:rgba(0,0,0,0.1);position:absolute;bottom:-68px}
+
+.confetti{position:absolute;inset:0;pointer-events:none}
+
+footer{margin-top:18px;text-align:center;color:#666;font-size:13px}
+
+@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-140vh) rotate(360deg)}}
+
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="confetti" aria-hidden="true"></div>
+    <header>
+      <div class="logo">
+        <h1>🎈 Musfir's Birthday Bash</h1>
+        <div class="sub">Oct 27 - make a wish and celebrate!</div>
+      </div>
+    </header><div class="main">
+  <div class="left">
+    <div class="counterCard" id="counterCard">
+      <div>
+        <div class="countLabel">Countdown for Musfir's birthday</div>
+        <div style="height:8px"></div>
+        <div class="timeNums" id="timeNums">
+          <div class="timePiece"><div class="big" id="days">0</div><div class="small">Days</div></div>
+          <div class="timePiece"><div class="big" id="hours">0</div><div class="small">Hours</div></div>
+          <div class="timePiece"><div class="big" id="minutes">0</div><div class="small">Minutes</div></div>
+          <div class="timePiece"><div class="big" id="seconds">0</div><div class="small">Seconds</div></div>
+        </div>
+      </div>
 
-<div class="countdown-card">
-  <div id="countdownMsg">--</div>
-  <div id="timeDisplay" class="time">-- : -- : -- : --</div>
-  <div class="labels">Days : Hours : Minutes : Seconds</div>
-  <button id="musicBtn" class="btn btn-play">Play Music</button>
-</div>
+      <div class="controls">
+        <button id="randPlay" class="play-small">▶ Play a random birthday tune</button>
+        <div style="font-size:12px;color:#666;text-align:right">(click to play)</div>
+      </div>
+    </div>
 
-<section class="reveal" id="revealSection">
-  <div class="message">Happy Birthday Musfir! 🎂🎈</div>
-  <p>We love you — open your gifts below!</p>
-</section>
+    <div class="message" id="messageArea" style="display:none">
+      <h2>🎉 Happy Birthday, Musfir! 🎉</h2>
+      <p>You make our life brighter — thank you for being wonderful. Here's to giggles, cake, and amazing surprises!</p>
 
-<section class="gallery" id="gallery">
-  <div class="photo" data-index="0"><img src="1.jpg"><div class="tooltip">Click to get gift1</div></div>
-  <div class="photo" data-index="1"><img src="2.jpg"><div class="tooltip">Click to get gift2</div></div>
-  <div class="photo" data-index="2"><img src="3.jpg"><div class="tooltip">Click to get gift3</div></div>
-  <div class="photo" data-index="3"><img src="4.jpg"><div class="tooltip">Click to get gift4</div></div>
-  <div class="photo" data-index="4"><img src="5.jpg"><div class="tooltip">Click to get gift5</div></div>
-  <div class="photo" data-index="5"><img src="6.jpeg"><div class="tooltip">Click to get gift6</div></div>
-</section>
+      <div class="gallery" id="gallery">
+        <div class="pic" data-index="1" title="Click to get gift1"><img src="1.jpg" alt="gift 1"><span>Click to get gift 1</span></div>
+        <div class="pic" data-index="2" title="Click to get gift2"><img src="2.jpg" alt="gift 2"><span>Click to get gift 2</span></div>
+        <div class="pic" data-index="3" title="Click to get gift3"><img src="3.jpg" alt="gift 3"><span>Click to get gift 3</span></div>
+        <div class="pic" data-index="4" title="Click to get gift4"><img src="4.jpg" alt="gift 4"><span>Click to get gift 4</span></div>
+        <div class="pic" data-index="5" title="Click to get gift5"><img src="5.jpg" alt="gift 5"><span>Click to get gift 5</span></div>
+        <div class="pic" data-index="6" title="Click to get gift6"><img src="6.jpeg" alt="gift 6"><span>Click to get gift 6</span></div>
+      </div>
 
-<div id="modalBack" class="modal-back">
-  <div class="modal">
-    <h3 id="modalMessage">Gift message</h3>
-    <button id="okBtn" class="btn btn-play">OK</button>
+      <div class="actions">
+        <button id="balloonToggle">Start Balloons</button>
+        <button id="playHbd" class="secondary">Play Music (hbd.mp3)</button>
+      </div>
+    </div>
+
   </div>
+
+  <aside class="right" id="partyControls">
+    <div style="background:linear-gradient(180deg,#fff,#fffef8);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)">
+      <strong>Party Controls</strong>
+      <p style="margin:8px 0 0 0;font-size:13px;color:#555">Use the buttons to add balloons and music!</p>
+    </div>
+  </aside>
 </div>
 
-<div class="controls" id="controls">
-  <button id="balloonBtn" class="btn btn-play">Release Balloons</button>
-  <button id="stopBalloonBtn" class="btn btn-play">Stop Balloons</button>
-  <button id="musicStopBtn" class="btn btn-play">Play Music</button>
-</div>
+<footer>Made with love by Mommy and Vaapa ❤️</footer>
 
-<script>
-const countdownMsg = document.getElementById('countdownMsg');
-const timeDisplay = document.getElementById('timeDisplay');
-const revealSection = document.getElementById('revealSection');
-const gallery = document.getElementById('gallery');
-const musicBtn = document.getElementById('musicBtn');
-const controls = document.getElementById('controls');
-const modalBack = document.getElementById('modalBack');
-const modalMessage = document.getElementById('modalMessage');
-const okBtn = document.getElementById('okBtn');
-const balloonBtn = document.getElementById('balloonBtn');
-const stopBalloonBtn = document.getElementById('stopBalloonBtn');
-const musicStopBtn = document.getElementById('musicStopBtn');
+  </div>  <div class="modal" id="modal">
+    <div class="card" role="dialog" aria-modal="true">
+      <div id="modalMsg">...message...</div>
+      <div style="height:12px"></div>
+      <button id="modalOk">OK</button>
+    </div>
+  </div>  <script>
+    // Target date: Oct 27, 2025 00:00:00
+    const target = new Date('2025-10-27T00:00:00');
+    // For quick testing uncomment the below line for a 5 second countdown
+    // const target = new Date(new Date().getTime() + 5000);
 
-const giftMessages = [
-  'Check your first gift under the sofa.',
-  'Find your second gift in the refrigerator.',
-  'Your third gift is near the TV.',
-  'Look under your pillow for the fourth gift.',
-  'The fifth gift is in the cupboard.',
-  'Your final gift is behind the curtain.'
-];
+    const daysEl=document.getElementById('days'),hrsEl=document.getElementById('hours'),minsEl=document.getElementById('minutes'),secsEl=document.getElementById('seconds');
+    const messageArea=document.getElementById('messageArea'),counterCard=document.getElementById('counterCard'),partyControls=document.getElementById('partyControls');
 
-gallery.style.display='none';
-controls.style.display='none';
+    function updateCountdown(){
+      const now=new Date();
+      let diff=target-now;
+      if(diff<=0){daysEl.textContent=0;hrsEl.textContent=0;minsEl.textContent=0;secsEl.textContent=0;showBirthday();return;}
+      const d=Math.floor(diff/(1000*60*60*24));diff-=d*(1000*60*60*24);
+      const h=Math.floor(diff/(1000*60*60));diff-=h*(1000*60*60);
+      const m=Math.floor(diff/(1000*60));diff-=m*(1000*60);
+      const s=Math.floor(diff/1000);
+      daysEl.textContent=d;hrsEl.textContent=h;minsEl.textContent=m;secsEl.textContent=s;
+    }
+    let countdownInterval=setInterval(updateCountdown,250);updateCountdown();
 
-// Countdown for testing 5 seconds
-const target = Date.now() + 5000; // 5 seconds countdown
-// const target = new Date('2025-10-27T00:00:00').getTime(); // Uncomment for 27th Oct
+    function showBirthday(){
+      clearInterval(countdownInterval);
+      counterCard.style.display='none';
+      messageArea.style.display='block';
+      partyControls.style.display='block';
+      startConfetti();
+    }
 
-function updateTimer(){
-  const now = Date.now();
-  const diff = target - now;
-  if(diff <= 0){
-    clearInterval(timerHandle);
-    revealSection.style.display='block';
-    gallery.style.display='grid';
-    controls.style.display='flex';
-    countdownMsg.textContent='';
-    timeDisplay.textContent='';
-    return;
-  }
-  const days=Math.floor(diff/(1000*60*60*24));
-  const hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const mins=Math.floor((diff%(1000*60*60))/(1000*60));
-  const secs=Math.floor((diff%(1000*60))/1000);
-  timeDisplay.textContent=`${String(days).padStart(2,'0')} : ${String(hrs).padStart(2,'0')} : ${String(mins).padStart(2,'0')} : ${String(secs).padStart(2,'0')}`;
-  countdownMsg.textContent=`${days}d ${hrs}h to go for Musfir's Birthday!`;
-}
-const timerHandle = setInterval(updateTimer,1000);
-updateTimer();
+    const modal=document.getElementById('modal');const modalMsg=document.getElementById('modalMsg');const modalOk=document.getElementById('modalOk');
+    const giftHints={1:'Your first gift is under the sofa. Shh! 🎁',2:'Your second gift is near the chair — look below the cushion. 🪑',3:'Look behind the bookshelf — your third gift loves books! 📚',4:'The fourth gift is hiding in the kitchen drawer. 🍪',5:'Under the bed there is a little surprise for the fifth gift. 🛏️',6:'Your sixth gift is waiting by the front door — don\\'t forget to check! 🚪'};
+    document.querySelectorAll('.pic').forEach(pic=>{pic.addEventListener('click',()=>{const idx=pic.getAttribute('data-index');modalMsg.textContent=giftHints[idx]||'A surprise awaits!';modal.classList.add('show');});});
+    modalOk.addEventListener('click',()=>modal.classList.remove('show'));
 
-// Music
-let audioCtx=null,isPlaying=false;
-musicBtn.addEventListener('click',()=>{
-  if(isPlaying){ audioCtx.close(); isPlaying=false; musicBtn.textContent='Play Music'; return; }
-  audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  const notes=[264,264,297,264,352,330,264,264,297,264,396,352,264,264,528,440,352,330,297,466,466,440,352,396,352];
-  const dur=0.32;
-  let t=audioCtx.currentTime+0.1;
-  notes.forEach((f,i)=>{
-    const o=audioCtx.createOscillator();
-    const g=audioCtx.createGain();
-    o.type='sine';
-    o.frequency.value=f;
-    o.connect(g);
-    g.connect(audioCtx.destination);
-    g.gain.setValueAtTime(0,t+i*dur);
-    g.gain.linearRampToValueAtTime(0.15,t+i*dur+0.01);
-    g.gain.linearRampToValueAtTime(0.0001,t+i*dur+dur-0.05);
-    o.start(t+i*dur);
-    o.stop(t+i*dur+dur);
-  });
-  isPlaying=true;
-  musicBtn.textContent='Stop Music';
-});
+    let balloonTimer=null;let balloonActive=false;const balloonBtn=document.getElementById('balloonToggle');
+    balloonBtn.addEventListener('click',()=>{if(!balloonActive){startBalloons();balloonBtn.textContent='Stop Balloons';}else{stopBalloons();balloonBtn.textContent='Start Balloons';}balloonActive=!balloonActive;});
+    function startBalloons(){balloonTimer=setInterval(createBalloon,450);}function stopBalloons(){clearInterval(balloonTimer);document.querySelectorAll('.balloon').forEach(b=>b.remove());}
+    function rand(min,max){return Math.random()*(max-min)+min}function createBalloon(){const b=document.createElement('div');b.className='balloon';const w=Math.floor(rand(36,74));const h=Math.floor(w*1.3);b.style.width=w+'px';b.style.height=h+'px';const left=rand(-10,100);b.style.left=left+'%';const color=['#ff6b81','#ffd166','#6fe7c1','#9ad1ff','#c18dff'][Math.floor(rand(0,5))];b.style.background='radial-gradient(circle at 30% 20%, #fff,'+color+')';b.style.boxShadow='0 8px 18px rgba(0,0,0,0.12)';const s=rand(14,28);b.style.animation=`floatUp ${s}s linear forwards`;b.style.transform=`translateY(0) rotate(${rand(-20,20)}deg)`;const str=document.createElement('div');str.className='string';b.appendChild(str);document.body.appendChild(b);setTimeout(()=>{b.remove();},s*1000+500);}
 
-// Gift modal
-document.querySelectorAll('.photo').forEach(photo=>{
-  photo.addEventListener('click',()=>{
-    const idx = Number(photo.dataset.index);
-    modalMessage.textContent = giftMessages[idx];
-    modalBack.style.display='flex';
-  });
-});
-okBtn.addEventListener('click',()=>modalBack.style.display='none');
-modalBack.addEventListener('click',e=>{if(e.target===modalBack) modalBack.style.display='none';});
+    const audioCtx=new(window.AudioContext||window.webkitAudioContext)();document.getElementById('randPlay').addEventListener('click',()=>playRandomTune());
+    function playRandomTune(){const melody=[0,0,2,0,5,4,0,0,2,0,7,5,0,0,12,9,5,4,2,10,10,9,5,7,5];const baseFreq=220+Math.floor(Math.random()*40);const tempo=rand(240,340);let when=audioCtx.currentTime+0.05;melody.forEach((n,i)=>{const duration=(i%3===2)?(tempo*1.1/1000):(tempo/1000);const freq=baseFreq*Math.pow(2,n/12);playTone(freq,when,duration);when+=duration;});}
+    function playTone(freq,start,dur){const o=audioCtx.createOscillator();const g=audioCtx.createGain();o.type=Math.random()>0.5?'sine':'triangle';o.frequency.setValueAtTime(freq,start);g.gain.setValueAtTime(0.0001,start);g.gain.exponentialRampToValueAtTime(0.14,start+0.02);g.gain.exponentialRampToValueAtTime(0.0001,start+dur);o.connect(g);g.connect(audioCtx.destination);o.start(start);o.stop(start+dur+0.02);}
 
-// Balloons
-let balloonInterval=null;
-balloonBtn.addEventListener('click',()=>{
-  if(balloonInterval) return;
-  balloonInterval=setInterval(()=>{
-    const b=document.createElement('div');
-    b.className='balloon';
-    const size=30+Math.random()*40;
-    b.style.width=size+'px';
-    b.style.height=size*1.4+'px';
-    b.style.left=Math.random()*90+'vw';
-    b.style.backgroundColor=`hsl(${Math.random()*360},70%,60%)`;
-    const duration=6+Math.random()*4;
-    b.style.animation=`floatUp ${duration}s linear forwards, sway 2s ease-in-out infinite alternate`;
-    document.body.appendChild(b);
-    setTimeout(()=>b.remove(),duration*1000);
-  },300);
-});
-stopBalloonBtn.addEventListener('click',()=>{
-  clearInterval(balloonInterval);
-  balloonInterval=null;
-});
+    const playHbdBtn=document.getElementById('playHbd');let hbdAudio=null;playHbdBtn.addEventListener('click',()=>{if(!hbdAudio){hbdAudio=new Audio('hbd.mp3');hbdAudio.loop=false;}hbdAudio.currentTime=0;hbdAudio.play().catch(()=>{});});
 
-// Post countdown HBD music
-let postAudio=null, postPlaying=false;
-musicStopBtn.addEventListener('click',()=>{
-  if(postPlaying){ postAudio.pause(); postAudio=null; postPlaying=false; musicStopBtn.textContent='Play Music'; }
-  else{ postAudio=new Audio('hbd.mp3'); postAudio.loop=true; postAudio.play(); postPlaying=true; musicStopBtn.textContent='Stop Music'; }
-});
-</script>
+    function startConfetti(){const confetti=document.querySelector('.confetti');for(let i=0;i<60;i++){const d=document.createElement('div');d.style.position='absolute';d.style.width='8px';d.style.height='8px';d.style.borderRadius='50%';d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';d.style.opacity=Math.random()*0.9+0.3;const colors=['#ff6b81','#ffd166','#9ad1ff','#6fe7c1','#c18dff'];d.style.background=colors[Math.floor(Math.random()*colors.length)];d.style.transform=`translateY(${Math.random()*40-20}px) rotate(${Math.random()*360}deg)`;confetti.appendChild(d);}setTimeout(()=>{confetti.innerHTML='';},24000);}
 
-</body>
+    window.addEventListener('keydown',(e)=>{if(e.key==='Escape')modal.classList.remove('show');});
+  </script></body>
 </html>
