@@ -10,12 +10,12 @@
   <div class="container">
     <header class="hero">
       <h1>🎈 Countdown for Musfir's Birthday 🎈</h1>
-      <p class="sub">Get ready to celebrate on October 27!</p>
+      <p class="sub">Get ready for the big celebration!</p>
     </header>
 
     <main>
       <section class="countdown-card">
-        <div class="countdown-label">Countdown for Musfir's birthday</div>
+        <div class="countdown-label">Countdown for Musfir's Birthday</div>
         <div id="countdown" class="countdown">
           <div class="time-segment"><span id="days">00</span><small>Days</small></div>
           <div class="time-segment"><span id="hours">00</span><small>Hours</small></div>
@@ -24,49 +24,23 @@
         </div>
 
         <div class="controls">
-          <button id="play-synth" class="btn">▶ Play music</button>
-          <small class="note">(small birthday tune — uses your browser's audio)</small>
+          <button id="play-music" class="btn">▶ Start Music</button>
         </div>
       </section>
 
-      <!-- Hidden until countdown finishes -->
       <section id="after" class="after-section hidden">
         <div class="birthday-message">
           <h2>🎉 Happy Birthday, Musfir! 🎉</h2>
-          <p>You make our lives brighter every day — enjoy your special day and all the surprises! 💖</p>
+          <p>You make our lives shine brighter every single day. Enjoy your special surprises! 💖</p>
         </div>
 
         <div class="gifts-grid">
-          <!-- 6 images -->
-          <div class="gift" data-index="0" title="Click to get gift1">
-            <img src="1.jpg" alt="gift 1"/>
-            <div class="gift-label">Click to get gift1</div>
-          </div>
-
-          <div class="gift" data-index="1" title="Click to get gift2">
-            <img src="2.jpg" alt="gift 2"/>
-            <div class="gift-label">Click to get gift2</div>
-          </div>
-
-          <div class="gift" data-index="2" title="Click to get gift3">
-            <img src="3.jpg" alt="gift 3"/>
-            <div class="gift-label">Click to get gift3</div>
-          </div>
-
-          <div class="gift" data-index="3" title="Click to get gift4">
-            <img src="4.jpg" alt="gift 4"/>
-            <div class="gift-label">Click to get gift4</div>
-          </div>
-
-          <div class="gift" data-index="4" title="Click to get gift5">
-            <img src="5.jpg" alt="gift 5"/>
-            <div class="gift-label">Click to get gift5</div>
-          </div>
-
-          <div class="gift" data-index="5" title="Click to get gift6">
-            <img src="6.jpeg" alt="gift 6"/>
-            <div class="gift-label">Click to get gift6</div>
-          </div>
+          <div class="gift" data-index="0" title="Click to get gift1"><img src="1.jpg" alt=""><div class="gift-label">Click to get gift1</div></div>
+          <div class="gift" data-index="1" title="Click to get gift2"><img src="2.jpg" alt=""><div class="gift-label">Click to get gift2</div></div>
+          <div class="gift" data-index="2" title="Click to get gift3"><img src="3.jpg" alt=""><div class="gift-label">Click to get gift3</div></div>
+          <div class="gift" data-index="3" title="Click to get gift4"><img src="4.jpg" alt=""><div class="gift-label">Click to get gift4</div></div>
+          <div class="gift" data-index="4" title="Click to get gift5"><img src="5.jpg" alt=""><div class="gift-label">Click to get gift5</div></div>
+          <div class="gift" data-index="5" title="Click to get gift6"><img src="6.jpeg" alt=""><div class="gift-label">Click to get gift6</div></div>
         </div>
 
         <div class="post-controls">
@@ -77,21 +51,19 @@
     </main>
 
     <footer class="footer">
-      <div>Happy Birthday Musfir 🎂 — Made with 💕 by Umma & Vaapa</div>
+      <div>💙 Happy Birthday Musfir — Made with 💕 by Umma & Vaapa 💙</div>
     </footer>
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+  <!-- modal -->
+  <div id="modal" class="modal hidden">
     <div class="modal-content">
-      <p id="modal-text">Your gift message</p>
+      <p id="modal-text">Gift message</p>
       <button id="modal-ok" class="btn">OK</button>
     </div>
   </div>
 
-  <!-- audio element for hbd.mp3 (you must place hbd.mp3 in root) -->
   <audio id="hbd-audio" src="hbd.mp3" preload="auto"></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
