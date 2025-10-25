@@ -1,187 +1,47 @@
 :root{
-  --bg:#fff7ff;
-  --accent:#ff6fb5;
-  --accent-2:#ffb86b;
+  --bg:#eaf6ff;
+  --accent:#339cff;
+  --accent-2:#00d4ff;
   --card:#ffffff;
-  --shadow: 0 6px 18px rgba(0,0,0,0.12);
-  --glass: rgba(255,255,255,0.6);
-  --text:#2b2b2b;
-  --muted:#6b6b6b;
-  --radius:16px;
-  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --text:#043a63;
+  --muted:#5b7289;
+  --shadow:0 6px 18px rgba(0,0,0,0.12);
+  font-family:"Poppins", system-ui, sans-serif;
 }
-
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
   margin:0;
-  background: radial-gradient(1200px 400px at 10% 10%, #fff0f8 0%, transparent 20%), linear-gradient(180deg,#fff7ff 0%, #f7fcff 100%);
+  background:linear-gradient(180deg,#eaf6ff,#ffffff);
   color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  padding:24px;
+  padding:20px;
 }
+.container{max-width:1100px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.hero{text-align:center;background:linear-gradient(135deg,#a8d8ff,#c7ebff);padding:16px;border-radius:16px;box-shadow:var(--shadow)}
+.hero h1{margin:6px 0;font-size:2rem;color:#005fbd}
+.sub{color:var(--muted)}
 
-.container{
-  max-width:1120px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
+.countdown-card{margin-top:20px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:20px;text-align:center}
+.countdown{display:flex;justify-content:center;gap:14px;margin-top:10px}
+.time-segment{background:#e3f2ff;padding:10px 14px;border-radius:10px;min-width:70px}
+.time-segment span{display:block;font-size:1.6rem;font-weight:700;color:#007bff}
+.time-segment small{color:var(--muted)}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;border-radius:10px;padding:10px 18px;font-weight:600;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 10px rgba(0,136,255,0.25)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,136,255,0.3)}
+.hidden{display:none!important}
+.after-section{margin-top:20px;background:#f4faff;padding:20px;border-radius:16px;box-shadow:var(--shadow)}
+.birthday-message{text-align:center}
+.birthday-message h2{color:#007bff;margin:10px 0}
+.gifts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:14px}
+.gift{background:#fff;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.06);padding:6px;cursor:pointer;transition:transform .2s}
+.gift:hover{transform:translateY(-5px)}
+.gift img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+.gift-label{font-weight:600;margin-top:6px;font-size:.9rem;color:#005fbd}
+.footer{text-align:center;margin-top:auto;padding:16px;font-weight:500;color:#005fbd}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:999}
+.modal-content{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,0.3)}
+.balloon{position:fixed;width:50px;height:65px;border-radius:50% 50% 45% 45%;display:flex;align-items:flex-end;justify-content:center;z-index:999;pointer-events:none;animation:floatUp linear forwards}
+.balloon .knot{width:8px;height:12px;background:rgba(0,0,0,0.1);margin-bottom:8px}
+@keyframes floatUp{
+  from{transform:translateY(0) rotate(0);opacity:1}
+  to{transform:translateY(-140vh) rotate(360deg);opacity:0}
 }
-
-.hero{
-  text-align:center;
-  padding:18px 12px;
-  margin-bottom:14px;
-  border-radius:18px;
-  background: linear-gradient(135deg, rgba(255,111,181,0.12), rgba(255,184,107,0.08));
-  box-shadow:var(--shadow);
-  backdrop-filter: blur(6px);
-}
-.hero h1{
-  margin:6px 0;
-  font-size:2rem;
-  letter-spacing:0.6px;
-}
-.hero .sub{ margin:0; color:var(--muted) }
-
-main{flex:1}
-
-.countdown-card{
-  display:flex;
-  gap:18px;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px;
-  border-radius:16px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
-  box-shadow:var(--shadow);
-  margin-bottom:18px;
-  flex-wrap:wrap;
-}
-
-.countdown-label{ font-weight:700; color:var(--accent); font-size:1.05rem }
-.countdown{ display:flex; gap:12px; align-items:center; }
-.time-segment{
-  background:linear-gradient(180deg,#ffffff,#fff0fb);
-  padding:10px 14px;
-  border-radius:12px;
-  text-align:center;
-  min-width:80px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.06);
-}
-.time-segment span{ display:block; font-size:1.6rem; font-weight:800; color:#ff3f8a }
-.time-segment small{ color:var(--muted) }
-
-.controls{ display:flex; align-items:center; gap:10px; flex-direction:column }
-
-.btn{
-  border:0;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:white;
-  padding:10px 14px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:700;
-  box-shadow:0 6px 16px rgba(255,111,181,0.18);
-}
-.btn:active{ transform:translateY(1px) }
-
-.note{ font-size:0.8rem; color:var(--muted) }
-
-.hidden{ display:none !important }
-
-/* after-section */
-.after-section{
-  margin-top:20px;
-  padding:18px;
-  border-radius:16px;
-  background: linear-gradient(180deg, rgba(255,250,240,0.6), rgba(255,255,255,0.6));
-  box-shadow:var(--shadow);
-}
-.birthday-message{ text-align:center; margin-bottom:16px }
-.birthday-message h2{ margin:6px 0; color:#ff2d7a }
-.birthday-message p{ color:var(--muted) }
-
-.gifts-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-bottom:16px;
-}
-.gift{
-  background:var(--card);
-  border-radius:12px;
-  overflow:hidden;
-  text-align:center;
-  padding:6px;
-  box-shadow:0 6px 14px rgba(0,0,0,0.06);
-  cursor:pointer;
-  transition:transform .18s ease;
-}
-.gift:hover{ transform:translateY(-6px) }
-.gift img{ width:100%; height:120px; object-fit:cover; display:block; border-radius:8px }
-.gift-label{ font-weight:700; font-size:0.9rem; padding:6px 2px }
-
-.post-controls{ display:flex; gap:12px; justify-content:center; margin-top:8px }
-
-/* footer */
-.footer{
-  text-align:center;
-  padding:14px 6px;
-  font-size:0.95rem;
-  color:var(--muted);
-}
-
-/* modal */
-.modal{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(11,11,12,0.35);
-  z-index:9999;
-}
-.modal-content{
-  background:white;
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 12px 36px rgba(0,0,0,0.28);
-  text-align:center;
-  min-width:280px;
-}
-
-/* balloons */
-.balloon{
-  position:fixed;
-  width:48px;
-  height:64px;
-  border-radius:50% 50% 45% 45%;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  z-index:999;
-  pointer-events:none;
-  transform:translateY(0) rotate(0deg);
-  animation: floatUp linear forwards;
-}
-.balloon .knot{
-  width:10px;
-  height:14px;
-  background:rgba(0,0,0,0.06);
-  border-radius:2px;
-  margin-bottom:8px;
-}
-/* floating animation (duration set inline) */
-@keyframes floatUp {
-  from { transform: translateY(0) rotate(0deg); opacity:1; }
-  to { transform: translateY(-140vh) rotate(360deg); opacity:0.02; }
-}
-
-/* gradient balloons using inline style colors */
-@media (max-width:640px){
-  .time-segment{ min-width:64px; padding:8px 10px }
-  .gift img{ height:100px }
-  }
