@@ -1,69 +1,246 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday Musfir 🎉</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Musfir’s Birthday Countdown 🎉</title>
+<style>
+  body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: linear-gradient(to bottom right, #a1c4fd, #c2e9fb);
+    text-align: center;
+    color: #003366;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  h1 {
+    font-size: 2em;
+    margin-top: 30px;
+  }
+  #countdown {
+    font-size: 2em;
+    margin: 20px 0;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 10px;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #birthdaySection {
+    display: none;
+    margin-top: 30px;
+  }
+  .gift-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .gift-images img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 3px solid #007bff;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  .gift-images img:hover {
+    transform: scale(1.1);
+  }
+  footer {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 1em;
+    border-top: 2px solid #007bff;
+  }
+  /* Balloons */
+  .balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 40px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+    animation: float 6s ease-in infinite;
+    z-index: 0;
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .popup-content {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+  }
+  .popup-content button {
+    margin-top: 15px;
+    background-color: #007bff;
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <h1>🎈 Countdown for Musfir's Birthday 🎈</h1>
-      <p class="sub">Get ready for the big celebration!</p>
-    </header>
 
-    <main>
-      <section class="countdown-card">
-        <div class="countdown-label">Countdown for Musfir's Birthday</div>
-        <div id="countdown" class="countdown">
-          <div class="time-segment"><span id="days">00</span><small>Days</small></div>
-          <div class="time-segment"><span id="hours">00</span><small>Hours</small></div>
-          <div class="time-segment"><span id="minutes">00</span><small>Minutes</small></div>
-          <div class="time-segment"><span id="seconds">00</span><small>Seconds</small></div>
-        </div>
+<h1>Countdown for Musfir’s Big Birthday! 🎈</h1>
+<div id="countdown"></div>
 
-        <div class="controls">
-          <button id="play-music" class="btn">▶ Start Music</button>
-        </div>
-      </section>
+<button id="playMusicBtn">Play Music 🎵</button>
+<audio id="birthdayAudio" src="hbd.mp3"></audio>
 
-      <section id="after" class="after-section hidden">
-        <div class="birthday-message">
-          <h2>🎉 Happy Birthday, Musfir! 🎉</h2>
-          <p>You make our lives shine brighter every single day. Enjoy your special surprises! 💖</p>
-        </div>
+<div id="birthdaySection">
+  <h1>🎉 Happy Birthday Musfir! 🎂</h1>
+  <p>You make our lives brighter and full of joy! 💕</p>
 
-        <div class="gifts-grid">
-          <div class="gift" data-index="0" title="Click to get gift1"><img src="1.jpg" alt=""><div class="gift-label">Click to get gift1</div></div>
-          <div class="gift" data-index="1" title="Click to get gift2"><img src="2.jpg" alt=""><div class="gift-label">Click to get gift2</div></div>
-          <div class="gift" data-index="2" title="Click to get gift3"><img src="3.jpg" alt=""><div class="gift-label">Click to get gift3</div></div>
-          <div class="gift" data-index="3" title="Click to get gift4"><img src="4.jpg" alt=""><div class="gift-label">Click to get gift4</div></div>
-          <div class="gift" data-index="4" title="Click to get gift5"><img src="5.jpg" alt=""><div class="gift-label">Click to get gift5</div></div>
-          <div class="gift" data-index="5" title="Click to get gift6"><img src="6.jpeg" alt=""><div class="gift-label">Click to get gift6</div></div>
-        </div>
-
-        <div class="post-controls">
-          <button id="balloons-toggle" class="btn">Start Balloons</button>
-          <button id="play-hbd" class="btn">Play Song Again</button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div>💙 Happy Birthday Musfir — Made with 💕 by Umma & Vaapa 💙</div>
-    </footer>
+  <div class="gift-images">
+    <img src="1.jpg" title="Click to get Gift 1" onclick="showGift(1)">
+    <img src="2.jpg" title="Click to get Gift 2" onclick="showGift(2)">
+    <img src="3.jpg" title="Click to get Gift 3" onclick="showGift(3)">
+    <img src="4.jpg" title="Click to get Gift 4" onclick="showGift(4)">
+    <img src="5.jpg" title="Click to get Gift 5" onclick="showGift(5)">
+    <img src="6.jpeg" title="Click to get Gift 6" onclick="showGift(6)">
   </div>
 
-  <!-- modal -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <p id="modal-text">Gift message</p>
-      <button id="modal-ok" class="btn">OK</button>
-    </div>
+  <div>
+    <button id="balloonToggle">🎈 Start Balloons 🎈</button>
+    <button id="playAgainBtn">Play Song Again 🎶</button>
   </div>
+</div>
 
-  <audio id="hbd-audio" src="hbd.mp3" preload="auto"></audio>
-  <script src="script.js"></script>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p id="giftMessage"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+<footer>Happy Birthday Musfir! Made with 💕 by Umma & Vaapa</footer>
+
+<script>
+  // Set countdown to 1 hour from now
+  const countdownDuration = 10 * 1000; // 1 hour
+  const endTime = new Date().getTime() + countdownDuration;
+
+  const countdownEl = document.getElementById("countdown");
+  const birthdaySection = document.getElementById("birthdaySection");
+  const playBtn = document.getElementById("playMusicBtn");
+  const audio = document.getElementById("birthdayAudio");
+
+  playBtn.addEventListener("click", () => {
+    audio.play();
+  });
+
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = endTime - now;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      countdownEl.textContent = "🎉 The wait is over! 🎉";
+      document.querySelector("h1").textContent = "It's Musfir’s Birthday! 🥳";
+      birthdaySection.style.display = "block";
+      playBtn.style.display = "none";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+  }, 1000);
+
+  // Gift messages
+  const giftHints = {
+    1: "🎁 Your first gift is under the sofa!",
+    2: "🎁 Your second gift is near the chair!",
+    3: "🎁 Your third gift is on the study table!",
+    4: "🎁 Your fourth gift is hiding behind the curtain!",
+    5: "🎁 Your fifth gift is in your toy box!",
+    6: "🎁 Your sixth gift is near your bed pillow!"
+  };
+
+  function showGift(num) {
+    document.getElementById("giftMessage").textContent = giftHints[num];
+    document.getElementById("popup").style.display = "flex";
+  }
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  // Balloons
+  let balloonInterval;
+  const balloonToggle = document.getElementById("balloonToggle");
+
+  balloonToggle.addEventListener("click", () => {
+    if (balloonToggle.textContent.includes("Start")) {
+      startBalloons();
+      balloonToggle.textContent = "🛑 Stop Balloons 🛑";
+    } else {
+      stopBalloons();
+      balloonToggle.textContent = "🎈 Start Balloons 🎈";
+    }
+  });
+
+  function startBalloons() {
+    balloonInterval = setInterval(() => {
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.backgroundColor = randomColor();
+      balloon.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 7000);
+    }, 300);
+  }
+
+  function stopBalloons() {
+    clearInterval(balloonInterval);
+    document.querySelectorAll(".balloon").forEach(b => b.remove());
+  }
+
+  function randomColor() {
+    const colors = ["#FF5F6D", "#FFC371", "#42E695", "#4776E6", "#8E54E9", "#FF9A9E"];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  // Play Again Button
+  document.getElementById("playAgainBtn").addEventListener("click", () => {
+    audio.currentTime = 0;
+    audio.play();
+  });
+</script>
+
 </body>
-</html>
+                                       </html>
