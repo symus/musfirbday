@@ -151,8 +151,10 @@
 
 <script>
   // Set countdown to 1 hour from now
-  const countdownDuration = 10 * 1000; // 1 hour
-  const endTime = new Date().getTime() + countdownDuration;
+ // const countdownDuration = 10 * 1000; // 1 hour
+  // Countdown ends on Oct 26, 9:00 PM local time
+const endTime = new Date("October 26, 2025 21:00:00").getTime();
+  //const endTime = new Date().getTime() + countdownDuration;
 
   const countdownEl = document.getElementById("countdown");
   const birthdaySection = document.getElementById("birthdaySection");
