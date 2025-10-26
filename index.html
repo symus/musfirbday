@@ -151,10 +151,10 @@
 
 <script>
   // Set countdown to 1 hour from now
- // const countdownDuration = 10 * 1000; // 1 hour
+  const countdownDuration = 10 * 1000; // 1 hour
   // Countdown ends on Oct 26, 9:00 PM local time
-const endTime = new Date("October 26, 2025 21:00:00").getTime();
-  //const endTime = new Date().getTime() + countdownDuration;
+//const endTime = new Date("October 26, 2025 21:00:00").getTime();
+  const endTime = new Date().getTime() + countdownDuration;
 
   const countdownEl = document.getElementById("countdown");
   const birthdaySection = document.getElementById("birthdaySection");
@@ -188,12 +188,12 @@ const endTime = new Date("October 26, 2025 21:00:00").getTime();
 
   // Gift messages
   const giftHints = {
-    1: "🎁 Your first gift is under the sofa!",
+    1: "🎁 Your first gift is under the pillow!",
     2: "🎁 Your second gift is near the chair!",
-    3: "🎁 Your third gift is on the study table!",
+    3: "🎁 Your third gift is inside the bathroom!",
     4: "🎁 Your fourth gift is hiding behind the curtain!",
-    5: "🎁 Your fifth gift is in your toy box!",
-    6: "🎁 Your sixth gift is near your bed pillow!"
+    5: "🎁 Your fifth gift is under the bed!",
+    6: "🎁 Your sixth gift is in the black bag!"
   };
 
   function showGift(num) {
